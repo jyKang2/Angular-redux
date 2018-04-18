@@ -4,15 +4,24 @@ import { Router } from "@angular/router";
 import { Injectable } from "@angular/core";
 import { Actions, Effect } from '@ngrx/effects';
 
-import * as HeroActions from "./hero.action";
 import { Hero } from '../../../../@angular-redux/core/model/hero';
+
+import * as HeroActions from "./hero.action";
+import * as RouterActions from '../../../../@angular-redux/core/router/router.action';
+
+
 
 
 @Injectable()
 export class HeroEffect {
 
 
-    // effect에서 
+    constructor(
+        private actions$: Actions, 
+        private heroService: HeroService, 
+        private router: Router) {}
+
+
     @Effect() HeroGetList$ = this.actions$
         .ofType(HeroActions.HERO_GET_LIST)
         .switchMap((action: HeroActions.HeroGetList) => {
@@ -22,6 +31,26 @@ export class HeroEffect {
                     return new HeroActions.HeroGetListSuccess(list);
                 });
         });
+    
+    @Effect() HeroGetDetail$ = this.actions$
+        .ofType(HeroActions.HERO_GET_DETAIL)
+        .switchMap((action: HeroActions.HeroGetDetail) => {
+            return this.heroService.getHero(action.id)
+                .map((res: any) => {
+                    const hero: Hero = Converter.jsonToInstance(Hero, res);
+                    return new HeroActions.HeroGetDetailSuccess(hero);
+                });
+        });
 
-    constructor(private actions$: Actions, private heroService: HeroService, private router: Router) {}
+    @Effect() HeroAdd$ = this.actions$
+        .ofType(HeroActions.HERO_ADD)
+        .switchMap((action: HeroActions.HeroAdd) => {
+            return this.heroService.addHero(action.hero)
+                .map((res: any) => {
+                    return new RouterActions.Go({path: ['/main/hero/list']});
+                });
+        });
+
+    
+
 }

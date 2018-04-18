@@ -1,3 +1,4 @@
+import { HeroListComponent } from './hero-list/hero-list.component';
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 
@@ -9,8 +10,9 @@ const heroRoutes: Routes =  [
         path: '',
         component: HeroComponent,
         children: [
+            { path: 'list', component: HeroListComponent },
             { path: 'detail/:id', component: HeroDetailComponent },
-            { path: '**', redirectTo: '' }
+            { path: '**', redirectTo: 'list' }
         ]
     }
 ];

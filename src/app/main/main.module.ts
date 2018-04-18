@@ -1,3 +1,5 @@
+import { HeroModule } from './hero/hero.module';
+import { HeroComponent } from './hero/hero.component';
 import { NgModule } from '@angular/core';
 import { MainRoutingModule } from './main-routing.module';
 
@@ -9,7 +11,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 @NgModule({
   imports: [
     MainRoutingModule,
-    SharedModule
+    SharedModule,
+    HeroModule
   ],
   declarations: [
     MainComponent,

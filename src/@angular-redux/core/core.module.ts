@@ -1,3 +1,5 @@
+// import { SessionService } from './service/session.service';
+// import { SpinnerModule } from './module/spinner.module';
 import { ApiModule } from './api/api.module';
 import {NgModule, Optional, SkipSelf} from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
@@ -18,15 +20,16 @@ import 'rxjs/add/operator/filter';
       ApiModule,
       HttpClientInMemoryWebApiModule.forRoot(
         InMemoryDataService, { dataEncapsulation: false }
-      )
+      ),
+      // SpinnerModule
     ],
     exports: [
-
+      // SpinnerModule
     ],
     declarations: [],
     entryComponents: [],
     providers: [
-
+      // SessionService
     ]
   })
   export class CoreModule {

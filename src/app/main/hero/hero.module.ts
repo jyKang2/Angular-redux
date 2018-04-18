@@ -4,6 +4,7 @@ import { HeroRoutingModule } from './hero-routing.module';
 import { SharedModule } from './../../../@angular-redux/shared/shared.module';
 import { NgModule } from '@angular/core';
 import { HeroComponent } from './hero.component';
+import { HeroListComponent } from './hero-list/hero-list.component';
 
 @NgModule({
   imports: [
@@ -13,7 +14,11 @@ import { HeroComponent } from './hero.component';
   declarations: [
     HeroComponent,
     HeroDetailComponent,
-    HeroSearchComponent
+    HeroSearchComponent,
+    HeroListComponent
+  ],
+  exports: [
+      HeroSearchComponent
   ]
 })
 export class HeroModule {

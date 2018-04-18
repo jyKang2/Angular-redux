@@ -1,3 +1,5 @@
+import { HeroService } from './../../../../@angular-redux/core/api/hero.service';
+import { Hero } from './../../../../@angular-redux/core/model/hero';
 import { Component, OnInit } from '@angular/core';
 
 import { Observable } from 'rxjs/Observable';
@@ -8,6 +10,7 @@ import {
   debounceTime, distinctUntilChanged, switchMap, distinct
 } from 'rxjs/operators';
 
+
 @Component({
   selector: 'app-hero-search',
   templateUrl: './hero-search.component.html',
@@ -15,27 +18,23 @@ import {
 })
 export class HeroSearchComponent implements OnInit {
 
-  constructor() {}
+  public heroes$: Observable<Hero[]>;
+  private searchTerms = new Subject<string>();
 
-  ngOnInit(): void {}
+  constructor(private heroService: HeroService) { }
 
-  // public heroes$: Observable<Hero[]>;
-  // private searchTerms = new Subject<string>();
+  public search(term: string): void {
+    this.searchTerms.next(term);
+  }
 
-  // constructor(private heroService: HeroService) { }
+  ngOnInit(): void {
+    this.heroes$ = this.searchTerms.pipe(
+      debounceTime(300),
 
-  // public search(term: string): void {
-  //   this.searchTerms.next(term);
-  // }
+      distinctUntilChanged(),
 
-  // ngOnInit(): void {
-  //   this.heroes$ = this.searchTerms.pipe(
-  //     debounceTime(300),
-
-  //     distinctUntilChanged(),
-
-  //     switchMap((term: string) => this.heroService.searchHeroes(term))
-  //   );
-  // }
+      switchMap((term: string) => this.heroService.searchHeroes(term))
+    );
+  }
 
 }

@@ -1,5 +1,5 @@
+import { MessageService } from './../../../@angular-redux/core/api/message.service';
 import { Component, OnInit } from '@angular/core';
-// import { MessageService } from '../message.service';
 
 @Component({
   selector: 'app-message',
@@ -8,9 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MessageComponent implements OnInit {
 
-  // constructor(public messageService: MessageService) { }
-
-  constructor() {}
+  constructor(public messageService: MessageService) { }
 
   ngOnInit() {
   }

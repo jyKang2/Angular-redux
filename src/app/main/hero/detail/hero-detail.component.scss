@@ -1,0 +1,37 @@
+:host {
+    button {
+        margin-top: 10px;
+    }
+
+    button.back {
+        font-family: Arial;
+        color: #000;
+        background-color: lightblue;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 4px;
+        cursor: pointer;
+        cursor: hand;
+      }
+    
+      button.back:hover {
+        background-color: lightskyblue;
+        color: #000;
+      }
+    
+    button.save {
+        font-family: Arial;
+        color: #eee;
+        background-color: indianred;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 4px;
+        cursor: pointer;
+        cursor: hand;
+    }
+    
+      button.save:hover {
+        background-color: lightcoral;
+        color: #efa;
+      }
+}
