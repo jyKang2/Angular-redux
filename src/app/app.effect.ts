@@ -1,5 +1,5 @@
-// import {NoticeEffect} from './page/notice/redux/notice.effect';
+import { HeroEffect } from './main/hero/redux/hero.effect';
 
 export const appEffects = [
-  
+    HeroEffect
 ];

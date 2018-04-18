@@ -1,7 +1,7 @@
 import { Hero } from './../../../../@angular-redux/core/model/hero';
-import {List, Map, Record} from 'immutable';
+import { List, Map, Record } from 'immutable';
 
-export interface IHeroState extends Map<String, any> {
+export interface IHeroState extends Map<string, any> {
     list: List<Hero>;
     selectedHero: Hero;
 }

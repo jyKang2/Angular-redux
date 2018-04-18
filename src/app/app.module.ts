@@ -1,3 +1,4 @@
+import { CoreModule } from './../@angular-redux/core/core.module';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -25,6 +26,7 @@ import { reducers } from './app.reducer';
     EffectsModule.forRoot(appEffects),
     AppRoutingModule,
     BrowserModule,
+    CoreModule,
     SharedModule
   ],
   providers: [],
