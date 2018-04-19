@@ -1,7 +1,7 @@
 <h1>{{title}}</h1>
 <nav>
-  <a routerLink="hero">Heroes</a>
-  <a routerLink="dashboard">Dashboard</a>
+  <div (click)="goToPage('hero')">Heroes</div>
+  <div (click)="goToPage('dashboard')">Dashboard</div>
 </nav>
 <router-outlet></router-outlet>
 <app-message></app-message>

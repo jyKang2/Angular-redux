@@ -1,5 +1,5 @@
 // import { PipeModule } from './pipe/pipe.module';
-import { ComponentModule } from './component/component.module';
+// import { ComponentModule } from './component/component.module';
 // import { MaterialModule } from './material/material.module';
 // import { DirectiveModule } from './directive/directive.module';
 import {NgModule} from "@angular/core";
@@ -15,7 +15,7 @@ import {FormsModule} from "@angular/forms";
     FormsModule,
     // DirectiveModule,
     // MaterialModule,
-    ComponentModule,
+    // ComponentModule,
     // PipeModule
   ],
   exports: [
@@ -24,7 +24,7 @@ import {FormsModule} from "@angular/forms";
     FormsModule,
     // DirectiveModule,
     // MaterialModule,
-    ComponentModule,
+    // ComponentModule,
     // PipeModule
   ],
   providers: [],

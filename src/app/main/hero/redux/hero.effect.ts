@@ -10,11 +10,8 @@ import * as HeroActions from "./hero.action";
 import * as RouterActions from '../../../../@angular-redux/core/router/router.action';
 
 
-
-
 @Injectable()
 export class HeroEffect {
-
 
     constructor(
         private actions$: Actions, 
@@ -47,10 +44,8 @@ export class HeroEffect {
         .switchMap((action: HeroActions.HeroAdd) => {
             return this.heroService.addHero(action.hero)
                 .map((res: any) => {
-                    return new RouterActions.Go({path: ['/main/hero/list']});
+                    return new RouterActions.Go({path: ['/main']});
                 });
         });
-
-    
 
 }

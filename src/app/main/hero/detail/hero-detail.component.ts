@@ -1,3 +1,4 @@
+import { HeroService } from './../../../../@angular-redux/core/api/hero.service';
 import { getSelectedHero } from './../redux/hero.selector';
 import { Store } from '@ngrx/store';
 import { AppStore } from './../../../app-store.interface';
@@ -18,8 +19,9 @@ export class HeroDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private store: Store<AppStore>,
+    private heroService: HeroService,
     private location: Location
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.getHero();
@@ -27,21 +29,17 @@ export class HeroDetailComponent implements OnInit {
 
   public getHero(): void {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.store.dispatch(new HeroActions.HeroGetDetail(id));
-    const state = this.store.select(getSelectedHero);
-    state.subscribe(hero => {
-      this.hero$ = hero;
-    });
-    
+    this.heroService.getHero(id)
+      .subscribe( hero => this.hero$ = hero);
   }
 
   public goBack(): void {
     this.location.back();
   }
 
-  // public save(): void {
-  //   this.heroService.updateHero(this.hero)
-  //     .subscribe(() => this.goBack());
-  // }
+  public save(): void {
+    this.heroService.updateHero(this.hero$)
+      .subscribe(() => this.goBack());
+  }
 
 }
