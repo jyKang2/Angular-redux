@@ -1,2 +1,2 @@
 # Angular-redux
-Angular Redux Study
+Angular-Redux Study
